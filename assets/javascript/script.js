@@ -17,14 +17,30 @@ function findMatches(wordToMatch, cities) {
     });
 }
 
+// number with commas function
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
 // display matches function
 function displayMatches() {
-    const matchArray = findMatches(this.value, cities)
-    console.log(matchArray)
+    const matchArray = findMatches(this.value, cities);
+    const html = matchArray.map(place => {
+        const regex = new RegExp(this.value, 'gi');
+        const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`);
+        const stateName = place.state.replace(regex, `<span class="hl">${this.value}</span>`);
+        return `
+        <li>
+            <span class="name">${cityName}, ${stateName}</span>
+            <span class="population">${numberWithCommas(place.population)}</span>
+        </li>
+        `;
+    }).join('');
+    suggestions.innerHTML = html;
 }
 // search and suggestion query selector
 const searchInput = document.querySelector('.search');
-const suggestion = document.querySelector('.suggestion');
+const suggestions = document.querySelector('.suggestions');
 
 // search event listeners keyup and change
 searchInput.addEventListener('change', displayMatches);
