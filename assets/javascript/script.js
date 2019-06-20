@@ -21,9 +21,10 @@ function findMatches(wordToMatch, cities) {
 function displayMatches(){
     const matchArray = findMatches(this.value, cities)
 }
-
+// search and suggestion query selector
 const searchInput = document.querySelector('.search');
 const suggestion = document.querySelector('.suggestion');
 
+// search event listeners keyup and change
 searchInput.addEventListener('change', displayMatches);
 searchInput.addEventListener('keyup', displayMatches);
