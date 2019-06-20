@@ -17,3 +17,13 @@ function findMatches(wordToMatch, cities) {
     });
 }
 
+// display matches function
+function displayMatches(){
+    const matchArray = findMatches(this.value, cities)
+}
+
+const searchInput = document.querySelector('.search');
+const suggestion = document.querySelector('.suggestion');
+
+searchInput.addEventListener('change', displayMatches);
+searchInput.addEventListener('keyup', displayMatches);
