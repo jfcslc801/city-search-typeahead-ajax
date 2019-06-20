@@ -18,8 +18,9 @@ function findMatches(wordToMatch, cities) {
 }
 
 // display matches function
-function displayMatches(){
+function displayMatches() {
     const matchArray = findMatches(this.value, cities)
+    console.log(matchArray)
 }
 // search and suggestion query selector
 const searchInput = document.querySelector('.search');
